@@ -57,7 +57,7 @@ This project is a powerful Interactive Voice Response (IVR) system designed for 
 Ensure these environment variables are set appropriately in the Docker Compose file or passed during container startup to avoid exposing sensitive information.
 
 ### Example Conversation Flow
-
+```
 User: "Hello, I need help with my plumbing."
 Bot: "Hello! I'm here to assist you. Could you please describe the problem you're experiencing?"
 User: "My sink has been leaking water slowly, and it's been getting worse over the past few days."
@@ -84,6 +84,7 @@ User: "No, that's all for now."
 Bot: "Great. We'll see you tomorrow morning. If you need to reschedule or have any other questions, please don't hesitate to contact us. Thank you, Jane, and have a great day!"
 User: "Thank you, goodbye."
 Bot: "Goodbye, and take care!"
+```
 
 
 
