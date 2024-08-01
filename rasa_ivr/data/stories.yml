@@ -1,0 +1,644 @@
+version: "3.1"
+
+stories:
+  - story: greeting_user
+    steps:
+    - intent: intent_greet
+    - action: utter_greet
+
+  - story: how_are_you_greeting
+    steps:
+    - intent: intent_how_are_you
+    - action: utter_doing_great
+
+  - story: user_wants_service_vague_response_from_user
+    steps:
+    - intent: intent_want_services
+    - action: utter_describe_issue_in_detail
+
+  - story: bot_should_expect_a_detailed_description
+    steps:
+    - action: utter_describe_issue_in_detail
+    - intent: intent_describe_issue_in_detail
+
+  - story: user_gives_detailed_description_then_chatgpt_response_and_asks_user_for_name_save_information
+    steps:
+    - intent: intent_describe_issue_in_detail
+    - action: action_chatgpt_response
+    - action: utter_ask_user_name
+    - intent: user_name
+    - action: action_save_customer_info
+
+  - story: user_gives_detailed_description_then_chatgpt_response
+    steps:
+    - intent: intent_describe_issue_in_detail
+    - action: action_chatgpt_response
+
+  - story: bot_should_expect_a_name_from_user_then_saves_info
+    steps:
+    - action: utter_ask_user_name
+    - intent: user_name
+    - action: action_save_customer_info
+
+  - story: bot_asks_for_zipcode_should_expect_a_zipcode_from_user_then_saves_info
+    steps:
+    - action: utter_ask_user_zipcode
+    - intent: user_zipcode
+    - action: action_save_customer_info
+
+  - story: bot_asks_for_address_should_expect_a_address_from_user_then_saves_info
+    steps:
+    - action: utter_ask_user_address
+    - intent: user_address
+    - action: action_save_customer_info
+
+  - story: bot_asks_user_when_they_are_available_user_provides_a_date_and_time
+    steps:
+    - action: utter_ask_availability
+    - intent: intent_want_appointment
+
+  - story: bot_asks_user_when_they_are_available_user_provides_a_date_and_time_and_confirms
+    steps:
+    - action: utter_ask_availability
+    - intent: intent_want_appointment
+    - action: action_confirm_issue_date
+    - intent: intent_affirm
+
+  - story: user_confirms_appointment_date_and_confirms
+    steps:
+    - intent: intent_want_appointment
+    - action: action_confirm_issue_date
+    - intent: intent_affirm
+  
+  - story: user_wants_to_change_appointment_date_and_bot_asks_for_new_date
+    steps:
+    - intent: intent_want_appointment
+    - action: action_confirm_issue_date
+    - intent: intent_deny
+    - action: action_reset_issue_date
+    - action: utter_new_issue_date
+
+  - story: bot_confirms_everything_and_user_confirms
+    steps:
+    - action: action_confirm_everything
+    - intent: intent_affirm
+    - action: action_report_issue
+
+  - story: bot_confirms_everything_and_user_denies_bot_asks_what_needs_to_be_corrected
+    steps:
+    - action: action_confirm_everything
+    - intent: intent_deny
+    - action: utter_ask_about_wrong_info
+
+  # - story: bot_confirms_everything_and_user_denies
+  #   steps:
+  #   - action: action_confirm_everything
+  #   - intent: intent_wrong_appointment_date
+  #   - action: utter_new_issue_date
+  #   - action: action_confirm_everything
+  #   - intent: intent_affirm
+  #   - action: action_report_issue
+
+  # - story: bot_confirms_everything_and_user_denies_
+  #   steps:
+  #   - action: action_confirm_everything
+  #   - intent: intent_wrong_address
+  #   - action: utter_provide_correct_address
+  #   - intent: user_address
+  #   - action: action_save_customer_info
+  #   - action: action_confirm_everything
+  #   - intent: intent_affirm
+  #   - action: action_report_issue
+
+  - story: user_continues_to_ask_for_appointment_date_if_zipcode_has_been_given
+    steps:
+    - intent: user_address
+    - action: action_user_zipcode_given
+    - slot_was_set:
+      - user_zipcode_given: true
+    - action: utter_ask_availability
+
+  - story: user_asks_for_zipcode_if_not_provided
+    steps:
+    - intent: user_address
+    - action: action_user_zipcode_given
+    - slot_was_set:
+      - user_zipcode_given: 
+    - action: utter_ask_user_zipcode
+
+  - story: user_wants_quote
+    steps:
+    - intent: intent_want_quote
+    - action: utter_quote
+
+  - story: user_thanks
+    steps:
+    - intent: intent_thank
+    - action: utter_thank
+
+  # - story: gives real date
+  #   steps: 
+  #     - intent: intent_want_appointment
+  #     - action: action_determine_date
+
+  - story: user_says_out_of_scope_stuff
+    steps: 
+      - intent: intent_out_of_scope
+      - action: action_chatgpt_response_out_of_scope
+
+  - story: user_challenges_bot
+    steps: 
+      - intent: intent_bot_challenge
+      - action: utter_i_am_bot
+
+  - story: user_wants_assistant_to_repeat_the_last_phrase
+    steps: 
+      - intent: intent_repeat_last_phrase
+      - action: action_repeat_last_phrase
+
+  - story: user_says_that_the_price_is_expensive_the_assistant_responds_to_the_objection
+    steps: 
+      - intent: intent_price_expensive
+      - action: utter_respond_price_expensive
+
+  - story: user_asks_about_business_hours
+    steps: 
+      - intent: intent_ask_business_hours
+      - action: utter_business_hours
+
+  - story: user_asks_if_its_the_correct_company
+    steps:
+    - intent: intent_ask_if_correct_company
+    - action: utter_affirm_to_correct_company
+  
+  - story: user_says_that_they_dont_want_to_book_an_appointment
+    steps:
+    - intent: intent_dont_want_appointment
+    - action: utter_dont_want_appointment
+
+  - story: user_wants_to_change_appointment_date
+    steps: 
+      - intent: intent_wrong_appointment_date
+      - action: utter_ask_availability
+
+  - story: user_says_that_something_is_wrong_but_very_vague
+    steps:
+    - intent: intent_wrong_info
+    - action: utter_ask_about_wrong_info
+
+  - story: user_says_that_name_is_wrong
+    steps:
+    - intent: intent_wrong_name
+    - action: utter_provide_correct_name
+
+  - story: user_says_that_zipcode_is_wrong
+    steps:
+    - intent: intent_wrong_zipcode
+    - action: utter_provide_correct_zipcode
+
+  - story: user_says_that_address_is_wrong
+    steps:
+    - intent: intent_wrong_address
+    - action: utter_provide_correct_address
+
+  - story: user_question_why_bot_is_collecting_name
+    steps:
+    - action: utter_ask_user_name
+    - intent: intent_user_requests_explanation
+    - action: utter_provide_explanation_for_name
+    - action: utter_ask_user_name
+
+  - story: user_question_why_bot_is_collecting_zipcode
+    steps:
+    - action: utter_ask_user_zipcode
+    - intent: intent_user_requests_explanation
+    - action: utter_provide_explanation_for_zipcode
+    - action: utter_ask_user_zipcode
+
+  - story: user_question_why_bot_is_collecting_address
+    steps:
+    - action: utter_ask_user_address
+    - intent: intent_user_requests_explanation
+    - action: utter_provide_explanation_for_address
+    - action: utter_ask_user_address
+
+  - story: user_provides_a_appointment_date_they_want_with_the_name_slot_being_set
+    steps:
+    - intent: intent_want_appointment
+    - action: action_user_name_given
+    - slot_was_set:
+      - user_name_given: true
+    - action: action_confirm_issue_date
+
+  - story: user_asks_about_available_appointments_with_the_name_slot_being_set
+    steps:
+    - intent: intent_ask_about_available_appointments
+    - action: action_user_name_given
+    - slot_was_set:
+      - user_name_given: true
+    - action: utter_available_appointments
+
+  - story: user_wants_to_book_an_appointment_without_the_name_slot_being_set
+    steps:
+    - intent: intent_ask_about_available_appointments
+    - action: action_user_name_given
+    - slot_was_set:
+      - user_name_given: false
+    - action: utter_how_can_help
+
+  - story: user_wants_to_book_an_appointment_without_the_name_slot_being_set 
+    steps:
+    - intent: intent_want_appointment
+    - action: action_user_name_given
+    - slot_was_set:
+      - user_name_given: false
+    - action: utter_how_can_help
+
+  - story: user_says_they_will_call_back_bot_responds_accordingly
+    steps:
+    - intent: intent_call_back
+    - action: utter_call_back
+
+  - story: user_asks_about_services_provided_bots_responds_accordingly
+    steps:
+    - intent: intent_about_services_provided
+    - action: utter_different_services_provided
+
+  - story: bot_detects_low_confidence_asks_user_to_rephrase
+    steps:
+    - intent: nlu_fallback
+    - action: utter_rephrase
+
+  - story: user_asks_about_job_duration_bot_responds_accordingly
+    steps:
+    - intent: intent_job_duration
+    - action: utter_job_duration
+
+  - story: user_says_goobye
+    steps:
+    - intent: intent_goodbye
+    - action: utter_goodbye
+
+  # - story: user_says_chitchat
+  #   steps: 
+  #     - intent: intent_chitchat
+  #     - action: utter_ask_rephrase
+
+  # - story: Detailed_Inquiry_And_Full_Name_Phone_Number_Ask_About_Referral_Requested_Quote_Clarify_Quote_Story
+  #   steps:
+  #   - intent: intent_want_services
+  #   - action: utter_describe_issue_in_detail
+  #   - intent: intent_describe_issue_in_detail
+  #   - action: action_chatgpt_response
+  #   - action: utter_ask_user_name
+  #   - intent: user_name
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_zipcode
+  #   - intent: user_zipcode
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_address
+  #   - intent: user_address
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_availability
+  #   - intent: intent_ask_about_available_appointments
+  #   - action: utter_ask_availability
+  #   - intent: intent_want_quote
+  #   - action: utter_quote
+  #   - intent: intent_call_back
+  #   - action: utter_call_back
+  #   - intent: intent_goodbye
+  #   - action: utter_goodbye
+
+  # - story: Greeting_Want_Services_Later_Explains_Issue_In_Detail_Utters_Appointments_Available_Requested_Quote_Call_Back_Goobye
+  #   steps:
+  #   - intent: intent_how_are_you
+  #   - action: utter_doing_great
+  #   - intent: intent_want_services
+  #   - action: utter_describe_issue_in_detail
+  #   - intent: intent_describe_issue_in_detail
+  #   - action: action_chatgpt_response
+  #   - action: utter_ask_user_name
+  #   - intent: user_name
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_zipcode
+  #   - intent: user_zipcode
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_address
+  #   - intent: user_address
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_availability
+  #   - intent: intent_ask_about_available_appointments
+  #   - action: utter_available_appointments
+  #   - intent: intent_want_quote
+  #   - action: utter_quote
+  #   - intent: intent_call_back
+  #   - action: utter_thank
+  #   - intent: intent_goodbye
+  #   - action: utter_goodbye
+
+  # - story: Detailed_Inquiry_Available_Appointment_Times_Quote_Request_Job_Duration
+  #   steps:
+  #   - intent: intent_how_are_you
+  #   - action: utter_doing_great
+  #   - intent: intent_describe_issue_in_detail
+  #   - action: action_chatgpt_response
+  #   - action: utter_ask_user_name
+  #   - intent: user_name
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_zipcode
+  #   - intent: user_zipcode
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_address
+  #   - intent: user_address
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_availability
+  #   - intent: intent_ask_about_available_appointments
+  #   - action: utter_available_appointments
+  #   - intent: intent_want_appointment
+  #   - action: action_confirm_issue_date
+  #   - intent: intent_want_quote
+  #   - action: utter_quote
+  #   - intent: intent_job_duration
+  #   - action: utter_job_duration
+  #   - intent: intent_call_back
+  #   - action: utter_goodbye
+
+  # - story: Greeting_detailed_inquiry_collected_full_name_collected_address_requested_quote_clarified_quote_call_back_goodbye
+  #   steps:
+  #   - intent: intent_how_are_you
+  #   - action: utter_doing_great
+  #   - intent: intent_describe_issue_in_detail
+  #   - action: action_chatgpt_response
+  #   - action: utter_ask_user_name
+  #   - intent: user_name
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_zipcode
+  #   - intent: user_zipcode
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_address
+  #   - intent: intent_want_quote
+  #   - action: utter_quote
+  #   - intent: intent_call_back
+  #   - action: utter_goodbye
+  #   - intent: intent_goodbye
+  #   - action: utter_goodbye
+
+  # - story: Greeting_wanted_services_detailed_inquiry_provided_asked_if_existing_customer_asked_user_for_address_user_requested_quote_requested_job_duration_requested_other_services_provided
+  #   steps:
+  #   - intent: intent_how_are_you
+  #   - action: utter_doing_great
+  #   - intent: intent_want_services
+  #   - action: utter_describe_issue_in_detail
+  #   - intent: intent_describe_issue_in_detail
+  #   - action: action_chatgpt_response
+  #   - action: utter_ask_user_name
+  #   - intent: user_name
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_zipcode
+  #   - intent: user_zipcode
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_address
+  #   - intent: intent_want_quote
+  #   - action: utter_quote
+  #   - intent: intent_job_duration
+  #   - action: utter_job_duration
+  #   - intent: intent_about_services_provided
+  #   - action: utter_different_services_provided
+  #   - intent: intent_call_back
+  #   - action: utter_thank
+  #   - intent: intent_goodbye
+  #   - action: utter_goodbye
+
+  # - story: user_books_an_appointment_happy_path_1
+  #   steps:
+  #   - intent: intent_want_services
+  #   - action: utter_describe_issue_in_detail
+  #   - intent: intent_describe_issue_in_detail
+  #   - slot_was_set:
+  #     - issue_description_detailed: so the toilet is not flushing its been like this for a couple days i tried to use a plunger to fix it but it just doesnt seem to work
+  #   - action: action_chatgpt_response
+  #   - action: utter_ask_user_name
+  #   - intent: user_name
+  #     entities:
+  #     - PERSON: safwan
+  #   - slot_was_set:
+  #     - PERSON: safwan
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_address
+  #   - intent: user_address
+  #     entities:
+  #     - user_address: 2221 stone wheel dr apt c
+  #     - user_zipcode: "20191"
+  #   - slot_was_set:
+  #     - user_address: 2221 stone wheel dr apt c
+  #     - user_zipcode: "20191"
+  #   - action: action_user_zipcode_given
+  #   - slot_was_set:
+  #     - user_zipcode_given: true
+  #   - action: utter_ask_availability
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_availability
+  #   - intent: intent_want_appointment
+  #     entities:
+  #     - issue_description: monday
+  #       role: issue_day
+  #   - slot_was_set:
+  #     - issue_day: monday
+  #   - action: action_confirm_issue_date
+  #   - intent: intent_affirm
+  #   - action: action_confirm_everything
+  #   - intent: intent_affirm
+  #   - action: action_report_issue
+  #   - intent: intent_goodbye
+  #   - action: utter_goodbye
+
+  # - story: user_books_an_appoinent_by_asking_assistant_for_available_times_1
+  #   steps:
+  #   - intent: intent_how_are_you
+  #   - action: utter_doing_great
+  #   - intent: intent_describe_issue_in_detail
+  #   - slot_was_set:
+  #     - issue_description_detailed: so my water heater hasnt been working i cant seem to get hot water in my sinks and its really slow when the water comes out
+  #   - action: action_chatgpt_response
+  #   - action: utter_ask_user_name
+  #   - intent: user_name
+  #     entities:
+  #     - PERSON: alex
+  #   - slot_was_set:
+  #     - PERSON: alex
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_zipcode
+  #   - intent: user_zipcode
+  #     entities:
+  #     - user_zipcode: '20191'
+  #   - slot_was_set:
+  #     - user_zipcode: '20191'
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_address
+  #   - intent: user_address
+  #     entities:
+  #     - user_address: 182 laurel way herndon apt a1
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_availability
+  #   - intent: intent_ask_about_available_appointments
+  #   - action: utter_available_appointments
+  #   - intent: intent_want_appointment
+  #     entities:
+  #     - issue_description: thursday
+  #       role: issue_day
+  #   - slot_was_set:
+  #     - issue_day: thursday
+  #   - action: action_confirm_issue_date
+  #   - intent: intent_affirm
+  #   - action: action_confirm_everything
+  #   - intent: intent_affirm
+  #   - action: action_report_issue
+  #   - intent: intent_goodbye
+  #   - action: utter_goodbye
+
+  # - story: user_does_not_provide_address_and_asks_for_available_times
+  #   steps:
+  #   - intent: intent_greet
+  #   - action: utter_greet
+  #   - intent: intent_describe_issue_in_detail
+  #   - slot_was_set:
+  #     - issue_description_detailed: i have a clogged toilet
+  #   - action: action_chatgpt_response
+  #   - action: utter_ask_user_name
+  #   - intent: user_name
+  #     entities:
+  #     - PERSON: safwan
+  #   - slot_was_set:
+  #     - PERSON: safwan
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_zipcode
+  #   - intent: user_zipcode
+  #     entities:
+  #     - user_zipcode: '20191'
+  #   - slot_was_set:
+  #     - user_zipcode: '20191'
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_address
+  #   - intent: intent_ask_about_available_appointments
+  #   - action: action_user_name_given
+  #   - slot_was_set:
+  #     - user_name_given: true
+  #   - action: utter_available_appointments
+  #   - intent: intent_want_appointment
+  #     entities:
+  #     - issue_description: monday
+  #       role: issue_day
+  #   - slot_was_set:
+  #     - issue_day: monday
+  #   - action: action_confirm_issue_date
+  #   - intent: intent_affirm
+  #   - action: action_confirm_everything
+  #   - intent: user_address
+  #     entities:
+  #     - user_address: 2221 stone wheel dr apt c
+  #   - slot_was_set:
+  #     - user_address: 2221 stone wheel dr apt c
+  #   - action: action_save_customer_info
+  #   - action: action_confirm_everything
+  #   - intent: intent_affirm
+  #   - action: action_report_issue
+
+  # - story: user_doesnt_give_address_and_asks_for_a_quote_before_they_continue
+  #   steps:
+  #   - intent: intent_how_are_you
+  #   - action: utter_doing_great
+  #   - intent: intent_describe_issue_in_detail
+  #   - slot_was_set:
+  #     - issue_description_detailed: the kitchen sink is broken the water is not going through it it only goes through when i turn the kitchen garbage disposal on
+  #   - action: action_chatgpt_response
+  #   - action: utter_ask_user_name
+  #   - intent: user_name
+  #     entities:
+  #     - PERSON: abdullah khan
+  #   - slot_was_set:
+  #     - PERSON: abdullah khan
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_zipcode
+  #   - intent: user_zipcode
+  #     entities:
+  #     - user_zipcode: '20191'
+  #   - slot_was_set:
+  #     - user_zipcode: '20191'
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_address
+  #   - intent: intent_want_quote
+  #   - action: utter_quote
+  #   - intent: intent_want_appointment
+  #     entities:
+  #     - issue_date: monday
+  #   - slot_was_set:
+  #     - issue_day: monday
+  #   - action: action_confirm_issue_date
+  #   - intent: intent_want_appointment
+  #     entities:
+  #     - issue_date: 4 pm
+  #   - slot_was_set:
+  #     - issue_time: 4 pm
+  #   - action: action_confirm_issue_date
+  #   - intent: intent_affirm
+  #   - action: action_confirm_everything
+  #   - intent: user_address
+  #     entities:
+  #     - user_address: 13036 queen chapel rd woodbridge
+  #   - slot_was_set:
+  #     - user_address: 13036 queen chapel rd woodbridge
+  #   - action: action_save_customer_info
+  #   - action: action_confirm_everything
+  #   - intent: intent_affirm
+  #   - action: action_report_issue
+
+  - story: user_provides_details_about_their_issue_books_an_appointment
+    steps:
+    - intent: intent_want_services
+    - action: utter_describe_issue_in_detail
+    - intent: intent_describe_issue_in_detail
+    - action: action_chatgpt_response
+    - action: utter_ask_user_name
+    - intent: user_name
+    - action: action_save_customer_info
+    - action: utter_ask_user_address
+    - intent: user_address
+    - action: action_save_customer_info
+    - action: utter_ask_availability
+    - intent: intent_ask_about_available_appointments
+    - action: utter_available_appointments
+    - intent: intent_want_appointment
+    - action: action_confirm_issue_date
+    - intent: intent_affirm
+    - action: action_confirm_everything
+    - intent: intent_affirm
+    - action: action_report_issue
+    - intent: intent_goodbye
+    - action: utter_goodbye
+
+  # - story: user_provides_name_first_then_details_about_their_issue_books_an_appointment
+  #   steps:
+  #   - intent: intent_how_are_you
+  #   - action: utter_doing_great
+  #   - intent: user_name
+  #   - action: action_save_customer_info
+  #   - action: utter_how_can_help
+  #   - intent: intent_describe_issue_in_detail
+  #   - action: action_chatgpt_response
+  #   - action: utter_ask_user_zipcode
+  #   - intent: user_zipcode
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_user_address
+  #   - intent: user_address
+  #   - action: action_save_customer_info
+  #   - action: utter_ask_availability
+  #   - intent: intent_ask_about_available_appointments
+  #   - action: utter_available_appointments
+  #   - intent: intent_want_appointment
+  #   - action: action_confirm_issue_date
+  #   - intent: intent_affirm
+  #   - action: action_confirm_everything
+  #   - intent: intent_affirm
+  #   - action: action_report_issue
+  #   - intent: intent_thank
+  #   - action: utter_thank

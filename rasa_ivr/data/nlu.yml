@@ -1,0 +1,725 @@
+version: "3.1"
+nlu:
+- intent: intent_want_services
+  examples: |
+    - i have an issue with my toilet
+    - theres a problem with my water heater
+    - the faucet is not working
+    - i have a issue with my water heater
+    - i had an issue with my bathroom sink
+    - today i have water heating issue
+    - i have a dripping faucet
+    - i have a leaky pipe
+    - i have a problem with my toilet
+    - my sink is leaking
+    - water heater not working
+    - sorry i have a bathroom problem
+    - so my sink is not working
+    - i have an issue in the house
+    - the issue is in the kitchen
+    - the toilet flush is not working properly
+    - i have an emergency plumbing need
+    - my basement is flooded
+    - i have a plumbing issue
+    - my shower head is leaking
+    - my water heater is broken
+    - i have an emergency
+    - i need emergency help
+    - hey i have a pipe thats leaking 
+    - i have a running toilet 
+    - so my sink drain is clogged
+    - my bathroon sink has slow water pressure
+    - when i turn on my hot water doesn't come
+    - my sink is clogged
+    - i have a clogged toilet
+    - my toilet its constantly running
+    - so my toilet im unable to flush the toilet
+    - there is water all over my kitchen cabinets 
+    - i got a problem in my bathroom man the shower is just messing everything up
+    - My homes Rheem water heater is dripping from the drain valve
+    - need help with a blocked drain
+    - looking for someone to fix my water pressure problem
+    - can someone come out to fix a leak under my kitchen sink
+    - I need a plumber for a broken shower valve
+    - looking for a quick fix for a noisy boiler.
+    - Need a professional to replace my old water heater.
+    - Can you send help for a burst water line?
+    - im having low water pressure throughout my house can you help
+    - my radiator is not heating up and i need service asap
+    - The sump pump is not working and i need someone to check it out
+    - can yall check out my garbage disposal i think its broken
+    - There's water leaking from under my sink.
+    - I've noticed my toilet keeps running long after flushing.
+    - My water heater doesn't seem to be working right.
+    - The water pressure in my shower is really low.
+    - There's a strange gurgling sound coming from my drains.
+    - I think there might be a blockage in my sewer line.
+    - My faucets are dripping, even when tightly closed.
+    - The pipes in my house make loud noises when water is used.
+    - I found water stains on my ceiling below the bathroom.
+    - There's a foul smell coming from my kitchen sink drain.
+    - My dishwasher is not draining properly.
+    - The water is not getting hot enough, and I suspect the boiler is at fault.
+    - There’s a constant dripping sound inside the walls.
+    - My basement has been flooding during heavy rains.
+    - The cold water tap is giving out warm water.
+    - I've noticed rust-colored water coming from my taps.
+    - There's a wet patch in my yard that never dries up.
+    - My sump pump seems to be malfunctioning.
+    - The water bill has unexpectedly increased, possibly due to a hidden leak.
+    - There's a crack in the porcelain of my toilet bowl.
+- intent: intent_describe_issue_in_detail
+  examples: |
+    - it started like a day ago and i left it overnight with some chemicals in it it flushed through but the toilet is half filled with water and whenever ever tried to flush it it just doesn't flush through well so i dont know what the issue is i dont know if its something with the toilet or down in the sewer lines or something like that
+    - i had an issue with my toilet its like running water so whenever i flush it theres like still water going through it and i can hear it and I feel like its just wasting a lot of water for me im not sure if you guys are going to be to fix that for me
+    - i have a clogged toilet i tried to leave some chemicals on it overnight and it just doesnt seem to work
+    - you see the little pipes under the sink whenever i run the water through first of all like the water doesnt go through fully and it seems to be clogged i tried different like chemicals and stuff and left it overnight there was some hair i took it out but still theres the water that goes down the drain is pretty slow and also under the sink theres like little drops of water just leaking through it
+    - for my bathroom sink the faucet doesnt work whenever i close it i still see like drops coming out of the faucet so im not sure what the issue with that is are you guys able to fix that?
+    - for the sink whenever i turn on the hot water theres like a little bit of hot water and then it just turns cold and also theres very low water pressure from it so im not sure if its the age of the water heater or what the issue is?
+    - i had a issue with my shower drain it seems to be clogged i tried different chemicals i left it overnight there was some hair i took it out but even now there is like water still in the tub like just standing
+    - my shower drain is clogged i tried different types of chemicals just to get out the there was some hair left i took it out but still whenever i run the water it just doesn't go through like a little bit goes through and then there is still water just staying back on the tub
+    - so i have a issue with my toilet whenever i flush it the water just keeps running so im just thinking its gonna be wasting a lot of water uhim not sure if its the issue with the flapper or what it is
+    - theres little bit of hot water and it runs for like five seconds and then after that it becomes cold and also there is no hot water coming out of my kitchen sink but not my bathroom sink
+    - yea so for my bathroom sink the faucet theres like water dripping out of it and it's leading to a lot of water waste so I'm not sure what the issue is are you able to fix that for me
+    - so the toilet is not flushing and theres like little water in the tank there is also this bad smell thats coming from it
+    - the water is not going through the sink and im not sure what the issue is it has been like this for the past couple days now
+    - so the toilet is clogged and the whenever i try to like flush it it wont flush i tried to use a plunger to get it uncloged that also didnt work
+    - so my water heater hasnt been working i cant seem to get hot water in my sinks and its really slow when the water comes out
+    - so my bathroom sink theres water dripping out of it off the faucet its like the water wont stop coming out
+    - the faucet doesn't close and water still runs from it when i try to close it
+    - so since yesterday the faucet in my sink is not working like the water thats coming from it is very slow and its making me very frustrated
+    - so i have water heating issue like my water only comes out as cold and not hot
+    - i have a leaky pipe and one of my pipes is broken so can you guys help me with my broken pipe
+    - so ive had a shower that has not been working its been like one or two hours and i need help
+    - the kitchen sink is broken the water is not going through it it only goes through when i turn the kitchen garbage disposal on
+    - This issue has been causing us problems for years and I want to see if there is a fix for it our utility Sink has to be snaked every 3 to 4 months because the water drains so slowly the sink fills up every time the washer drains and takes minutes to clear when it does drain I do hear gurgling noises this is the only drain in the entire house that has an issue
+    - i only have the cold water washing machine tap hooked up and i turned off it doesnt leak when its on it leaks through the handle
+    - i have a water heater in my basement and i notice that the top of the water heater is very hot from where its venting out and like the plastic rubber plugs that are around the hot and cold connections are melting also today i noticed that there is a little bit of water around the cold water plug too
+    - Good morning I need to schedule a plumbing appointment for next week I have a leaky pipe in my bathroom that needs fixing
+    - i got a issue man the shower drain is clogged i think and the water is not going through it it stands there for a couple minutes  
+    - so the i got a couple issues in my bathroom the water pressure in the sink and also in the shower drain are very slow and whenever i try to turn on the shower from the shower head like when i twist the handle it makes a squeaky sound 
+    - Well, the kitchen sink started leaking around the edges last week. I tried tightening the pipes underneath, but it didn't help. The leak seems to get worse when the dishwasher is running
+    - The bathroom toilet keeps running, and it's been like this for a few days. I looked inside the tank and tried adjusting the chain, but nothing changed. It's also making a hissing sound
+    - We noticed a wet patch on the dining room ceiling directly below the upstairs bathroom. Haven't done anything yet because I'm not sure where it's coming from. It appeared after we used the bathtub
+    - Our water heater isn't providing hot water since yesterday morning. I checked the pilot light, and it's on, but the water's still cold. This happened suddenly; it was fine the day before
+    - There's a slow drain in the shower that's been getting worse over the past month. I've used a commercial drain cleaner twice, but it only helped temporarily. Now, water pools really quickly
+    - The cold water tap in the master bedroom sink has very low pressure. It's been like this since last week. I removed the aerator to see if it was clogged, but that didn't make any difference
+    - I've been hearing a knocking noise in the walls when I turn on the water or flush the toilet. It started about two weeks ago. I haven't tried anything yet; I'm worried it might be the pipes
+    - Our garbage disposal is making a loud grinding noise but isn't working properly. I tried pressing the reset button and even checked for obvious blockages, but I can't find the problem
+    - There's a foul smell coming from the bathroom sink. I cleaned the P-trap under the sink last weekend, thinking that was the issue, but the smell is still there, especially after running water.
+    - I found water pooling around the base of the water heater. I've not attempted to fix it because I'm not sure if it's a leak or something else. It started just yesterday
+    - The basement sump pump seems to be running non-stop, even when it's not raining. I checked for any visible blockages around the intake but didn't find any. It's been like this for a couple of days now
+    - I attempted to fix a leaky shower head by replacing the washer inside, but it's still dripping, and now there's also a squealing noise when the water is running
+    - We have a new dishwasher, and it's not draining properly. I checked the hose for kinks and cleaned the filter, but it didn't solve the issue. This started happening right after we installed it
+    - There's a gurgling sound coming from the kitchen sink drain whenever we use the washing machine. I haven't tried anything yet because I'm not sure if they're even related
+    - The outdoor faucet is leaking, and I tried replacing the rubber washer inside, but when I turned the water back on, it started leaking even more. It's been like this for over a week
+    - I did not take any steps and there are there were no changes that I've noticed
+    
+- intent: intent_want_appointment
+  examples: |
+    - I need a plumber for next [Tuesday]{"entity": "issue_date", "role": "issue_day"}
+    - Can you schedule a plumber for [tomorrow]{"entity": "issue_date", "role": "issue_day"}
+    - What are your available slots for a plumber [week]{"entity": "issue_date", "role": "issue_day"}
+    - can you send a plumber by [tuesday]{"entity": "issue_date", "role": "issue_day"}
+    - can you come by this [friday]{"entity": "issue_date", "role": "issue_day"}
+    - sure im free this [monday]{"entity": "issue_date", "role": "issue_day"}
+    - this [monday]{"entity": "issue_date", "role": "issue_day"} will work
+    - im available this [wednesday]{"entity": "issue_date", "role": "issue_day"}
+    - this [monday]{"entity": "issue_date", "role": "issue_day"}
+    - im available this [friday]{"entity": "issue_date", "role": "issue_day"}
+    - im free next [week]{"entity": "issue_date", "role": "issue_day"}
+    - this [thursday]{"entity": "issue_date", "role": "issue_day"} ill be free
+    - [today]{"entity": "issue_date", "role": "issue_day"} im free
+    - [today]{"entity": "issue_date", "role": "issue_day"}
+    - this [monday]{"entity": "issue_date", "role": "issue_day"} im free
+    - this [thursday]{"entity": "issue_date", "role": "issue_day"}
+    - [tomorrow]{"entity": "issue_date", "role": "issue_day"} would be good
+    - i want them to come at [1 pm]{"entity": "issue_date", "role": "issue_time"}
+    - can the technician come at [3pm]{"entity": "issue_date", "role": "issue_time"} [monday]{"entity": "issue_date", "role": "issue_day"}
+    - [2 pm]{"entity": "issue_date", "role": "issue_time"} [today]{"entity": "issue_date", "role": "issue_day"}
+    - will [today]{"entity": "issue_date", "role": "issue_day"} [1]{"entity": "issue_date", "role": "issue_time"} be ok
+    - [tomorrow]{"entity": "issue_date", "role": "issue_day"} [2pm]{"entity": "issue_date", "role": "issue_time"}
+    - can you do [friday]{"entity": "issue_date", "role": "issue_day"} at [5pm]{"entity": "issue_date", "role": "issue_time"}
+    - would [today]{"entity": "issue_date", "role": "issue_day"} [one]{"entity": "issue_date", "role": "issue_time"} be oka
+    - im free next [wednesday]{"entity": "issue_date", "role": "issue_day"} can you do that?
+    - im not free today can you guys come on [thursday]{"entity": "issue_date", "role": "issue_day"}
+    - i said i want you guys to be here [today]{"entity": "issue_date", "role": "issue_day"} as soon as possible
+    - im free this [monday]{"entity": "issue_date", "role": "issue_day"} are you guys available
+    - around [4 pm]{"entity": "issue_date", "role": "issue_time"}
+    - i want them to come at [one pm]{"entity": "issue_date", "role": "issue_time"}
+    - can the technician come at [three pm]{"entity": "issue_date", "role": "issue_time"} [monday]{"entity": "issue_date", "role": "issue_day"}
+    - [two pm]{"entity": "issue_date", "role": "issue_time"} [today]{"entity": "issue_date", "role": "issue_day"}
+    - will [today]{"entity": "issue_date", "role": "issue_day"} [one]{"entity": "issue_date", "role": "issue_time"} be ok
+    - [tomorrow]{"entity": "issue_date", "role": "issue_day"} [two pm]{"entity": "issue_date", "role": "issue_time"}
+    - can you do [friday]{"entity": "issue_date", "role": "issue_day"} at [five pm]{"entity": "issue_date", "role": "issue_time"}
+    - around [four pm]{"entity": "issue_date", "role": "issue_time"}
+    - how about [today]{"entity": "issue_date", "role": "issue_day"} at [eight]{"entity": "issue_date", "role": "issue_time"}
+    - can you guys come by [thursday]{"entity": "issue_date", "role": "issue_day"} at [eleven am]{"entity": "issue_date", "role": "issue_time"}
+    - how does [twelve]{"entity": "issue_date", "role": "issue_time"} on [friday]{"entity": "issue_date", "role": "issue_day"} sound 
+    - im free this week on [thursday]{"entity": "issue_date", "role": "issue_day"} by [eleven am]{"entity": "issue_date", "role": "issue_time"}
+    - this [saturday]{"entity": "issue_date", "role": "issue_day"}
+    - this [sunday]{"entity": "issue_date", "role": "issue_day"}
+    - anytime on [saturday]{"entity": "issue_date", "role": "issue_day"}
+    - im free on [sunday]{"entity": "issue_date", "role": "issue_day"}
+    - this [tuesday]{"entity": "issue_date", "role": "issue_day"}
+    - next [monday]{"entity": "issue_date", "role": "issue_day"} would work
+    - how about next [tuesday]{"entity": "issue_date", "role": "issue_day"}
+    - will next [wednesday]{"entity": "issue_date", "role": "issue_day"} do 
+    - im free next [thursday]{"entity": "issue_date", "role": "issue_day"}
+    - i think next [friday]{"entity": "issue_date", "role": "issue_day"} would be best
+    - probably next [saturday]{"entity": "issue_date", "role": "issue_day"}
+    - next [sunday]{"entity": "issue_date", "role": "issue_day"}
+    - [six pm]{"entity": "issue_date", "role": "issue_time"}
+    - [seven pm]{"entity": "issue_date", "role": "issue_time"}
+    - [eight am]{"entity": "issue_date", "role": "issue_time"}
+    - [nine am]{"entity": "issue_date", "role": "issue_time"}
+    - [ten am]{"entity": "issue_date", "role": "issue_time"}
+    - next week on [tuesday]{"entity": "issue_date", "role": "issue_day"} would be best because its not a severe emergency
+    - [four]{"entity": "issue_date", "role": "issue_time"} would be fine
+    - [five]{"entity": "issue_date", "role": "issue_time"} is good 
+    - no at [four]{"entity": "issue_date", "role": "issue_time"}
+    - [five]{"entity": "issue_date", "role": "issue_time"} o clock would be good
+    - i think [today]{"entity": "issue_date", "role": "issue_day"} if you guys are free
+
+    
+
+- intent: intent_ask_about_available_appointments
+  examples: |
+    - i want to schedule an appointment
+    - i want to book an appointment for my issue
+    - Yea so what is like the best time you guys have?
+    - when is the soonest you guys have available
+    - when do you guys have available
+    - when can you guys come
+    - when are you guys available
+    - what is the earliest time you guys have
+    - whats the earliest that you guys can come?
+    - i need a plumber as soon as possible
+    - i need it asap
+    - as soon as possible 
+    - soon
+    - the sooner the better
+    - could you tell me the next open slot you have for a visit?
+    - What's the soonest appointment time available
+    - Can we set up a time for you guys to come out this week?"
+    - Im looking to get someone out here quickly what do you have open?
+    - How soon can we arrange for a technician to check out my issue?
+    - what time are you guys free
+
+- intent: intent_want_quote
+  examples: |
+    - I want to know how much its going to cost me.
+    - i want a quote
+    - how much does it cost
+    - how much will this cost me
+    - how much would it cost
+    - how much would they cost
+    - how much would it cost sorry this is a bit off topic
+    - this is a bit off topic how much would it cost?
+    - im just trying to get a quote from you guys
+    - i was tryna to get a quote
+    - i just want to get a quote for it how much would it cost to repair or fix
+    - i was wondering like how much would it cost for me with this company
+    - how much would it exactly like the issue that i just described how would that cost?
+    - i was just trying to get a quote from you guys uhh i was wondering like for a shower drain like how much would it be approximately im tryna get different quotes from different companies
+    - im looking for a quote
+    - can you guys give me a quote on how much i would be paying for that
+    - like how much would it approximately cost me?
+    - i was actually getting some quotes from different companies so how much would it cost like on average
+    - i actually want a quote to see how much it will cost me
+    - can i get a estimate on how much it will cost me cuz i tried asking a couple other companies and they gave me totally different answers how much would it approximately cost
+    - is it going to be expensive becuse im on a budget right now
+    - please tell me its cheap
+    - will it be expensive
+    - so before i give you my address i was wondering how much it will cost me
+- intent: intent_job_duration
+  examples: |
+    - so how long would it take to finish
+    - how long will it take
+    - is it going to take a long time to finish this
+    - how long the job will take
+    - will the fixing take long
+    - would they do it on the same day approximately how much time would it take for them to complete the job
+    - how long will the job take
+    - approximately how long would it take to solve the issue
+    - approximately like how long might it take
+    - how long would it take to fix
+- intent: intent_about_services_provided
+  examples: |
+    - what type of services do you guys provide
+    - what services you provide
+    - what can you fix
+    - Do you guys fix clogged toilets?
+    - yea so do you guys fix kitchen sinks?
+    - do you guys offer water heating as well
+    - do you guys offer any other services
+    - yall fix water heaters
+    - Could you tell me if you handle leak detection and repair?
+    - Im wondering do you offer services for installing new plumbing fixtures?
+    - Are you guys able to do sewer line inspections
+    - Do you provide emergency plumbing services at night
+    - Can you help with installing and repairing sump pumps?
+- intent: intent_call_back
+  examples: |
+    - ill give you guys a call back next week and then we can go through with this
+    - ill give you guys a call back if i change my mind
+    - ill give you guys a call back once i make my decision
+    - ill give you a call later
+    - let me give you guys a call back when i think about it alright
+    - i will think about it i will give you guys a call back alright
+    - i will think about it and get back to you
+    - ill get back to you guys alright
+    - let me think about it and give you guys a call back
+    - i will get back to you as soon as possible
+    - im not ready right now ill give you guys a call back ok
+- intent: intent_ask_if_correct_company
+  examples: |
+    - Hey Patrick you plumbing right, ABC plumbing?
+    - Is this ABC company?
+    - This is ABC Company right?
+- intent: user_name
+  examples: |
+    - My name is [safwan](PERSON)
+    - My name is [Hardy](PERSON)
+    - My name is [Andy](PERSON)
+    - Call me [Sera](PERSON)
+    - Call me [Mark](PERSON)
+    - Call me [Jenna](PERSON)
+    - I am [Robert] (PERSON), but you can call me Rob
+    - I am [Alex] (PERSON)
+    - The name's Patricia, [Patricia Jones](PERSON)
+    - It's [David](PERSON) here
+    - it's [deepak](PERSON)
+    - This is [Mark](PERSON) speaking
+    - I go by the name of [Michelle](PERSON)
+    - People call me [Tony](PERSON)
+    - Just [Lisa](PERSON) thanks
+    - I'm known as [Olivia](PERSON) around here.
+    - You're speaking to [Isabella](PERSON)
+    - I prefer to be called [Sophia](PERSON)
+    - [Mason Jhonson](PERSON)  that would be me.
+    - I'm [Alex Fergouson](PERSON)
+    - It's [Chloe](PERSON) pleased to meet you.
+    - i'm [alexander](PERSON)
+    - I am [santiago](PERSON)
+    - I'm [anya](PERSON)
+    - You may address me as [Ava](PERSON)
+    - [mike](PERSON)
+    - [john](PERSON)
+    - [james](PERSON)
+    - my name is [mujeeb](PERSON)
+    - this is well my name is [john](PERSON)
+  # - my name is 
+    # - my name is alex
+    # - my name is john
+    # - my name is robert
+    # - my name is james
+    # - my name is maria
+    # - my name is yuki
+    # - my name is aisha
+    # - my name is carlos
+    # - my name is lei
+    # - my name is jacob
+    # - its peter
+    # - its safwan
+    # - its alex
+    # - its deepak
+    # - its fatima
+    # - its rashid
+    # - it's ming
+    # - im adam
+    # - im alex 
+    # - im alexander 
+    # - Iam santiago
+    # - I'm anya
+    # - mike
+    # - john
+    # - james 
+    # - this is peter
+    # - this is nadia
+    # - this is steven
+    # - this is adam
+    # - olga
+    # - you're speaking with chen
+    # - your speaking with alex
+    # - ibrahim david
+    # - hannah
+    # - omar
+    # - jonathan hennry
+    # - my name is kenji
+    # - elena speaking
+    # - you can call me luis
+    # - I go by nina
+    # - my name is abdullah khan
+- regex: user_zipcode
+  examples: |
+    - \d{5}
+- intent: user_zipcode
+  examples: |
+    - my zip code is [20191](user_zipcode)
+    - its [22193](user_zipcode)
+    - [20191](user_zipcode)
+    - [22193](user_zipcode)
+    - its [20191](user_zipcode)
+    - [18278](user_zipcode)
+    - zip code is [20191](user_zipcode)
+    - my zip code is [22191](user_zipcode)
+    - thats [20191](user_zipcode)
+- intent: user_address
+  examples: |
+    - [8901 Pine Road, Charlottesville, Virginia](user_address) [22903](user_zipcode)
+    - [4567 Oak Street, Apartment 2B, Richmond, Virginia](user_address) [23220](user_zipcode)
+    - its [2345 Willow Lane, Suite 100, Virginia Beach, Virginia](user_address) [23451](user_zipcode)
+    - yea so [6789 Maple Drive, Alexandria](user_address)
+    - its [Cherry Court, Roanoke, Virginia](user_address)
+    - my address is [2221 stone wheel drive](user_address)
+    - [1213 Elm Street, Fairfax, Virginia](user_address) [22030](user_zipcode)
+    - its [2221 stone wheel](user_address)
+    - [1415 Birch Avenue, Fredericksburg, Virginia](user_address) [22401](user_zipcode)
+    - [1617 Cedar Place, Lynchburg, Virginia](user_address) [24504](user_zipcode)
+    - uhh yea [1819 Dogwood Terrace, Harrisonburg, Virginia](user_address) [22801](user_zipcode)
+    - so the address is [2021 Poplar Boulevard, Norfolk, Virginia](user_address) [23503](user_zipcode)
+    - address is [2233 Spruce Way, Anchorage, Alaska](user_address)
+    - its going to be [2445 Redwood Circle, Phoenix, Arizona](user_address) [85004](user_zipcode)
+    - [182 Laurel Way, Herndon Apartment A1](user_address)
+    - the address is [2879 Sequoia Drive, Sacramento, California](user_address) and the zipcode is [95814](user_zipcode)
+    - [3081 Magnolia Drive, Denver, Colorado](user_address) [80203](user_zipcode)
+    - [3293 Aspen Grove, Hartford, Connecticut](user_address) [06103](user_zipcode)
+    - [Pine Ridge Road](user_address)
+    - [Sycamore Lane, Tallahassee, Florida](user_address)
+    - [3949 Juniper Way, Atlanta, Georgia](user_address) [30301](user_zipcode)
+    - [4161 Hawthorn Street, Honolulu, Hawaii](user_address) [96813](user_zipcode)
+    - [4250 Cedar Park, Boise, Idaho](user_address)
+    - [4605 Elmwood Avenue, Chicago, Illinois](user_address) [60605](user_zipcode)
+    - So it is [4827 Oak Knoll, Indianapolis, Indiana](user_address) [46204](user_zipcode)
+    - Oh, my address is [3501 River Park Drive, Louisville, Kentucky] (user_address)
+    - It's [1428 Elm Street, Springfield, Massachusetts] (user_address)
+    - Sure, the address is [9586 Pine Needle Pass, Orlando, Florida] (user_address)
+    - Actually, it's [7743 Maple Avenue, Minneapolis, Minnesota] (user_address)
+    - Yea so, I live at [1120 Oak Lane, Seattle, Washington](user_address)
+    - It's 2297 [Cherry Blossom Drive, San Francisco, California](user_address)
+    - My new place? It's [1836 Willow Creek Road, Austin, Texas](user_address)
+    - My apartment It's [478 Eastwood Drive, Buffalo, New York](user_address)
+    - It's [9930 Aspen Lane, Cheyenne, Wyoming](user_address) [20812](user_zipcode)
+    - Oh, you'll find it at [8300 Poplar Street, Madison, Wisconsin](user_address) [20701](user_zipcode)
+    - Our headquarters is at [365 Golden Avenue, Newark, New Jersey](user_address) [84219](user_zipcode)
+    - [1292 n 37th st apartment tweleve](user_address)
+    - My home address is [642 Juniper Drive, Seattle, Washington](user_address)
+    - Sure thing, it's  [1824 Diamond Street, San Francisco, California](user_address) [25012](user_zipcode)
+    - The studio is at [1200 Brickell Bay Drive, Miami, Florida](user_address) [94123](user_zipcode)
+    - Yeah, the house is [Oak Street, Cincinnati, Ohio](user_address)
+    - [3925 72nd ave apartment twenty five](user_address)
+    - It's [8749 Cedar Street, Dallas, Texas](user_address) you got that?
+    - It's a bit tricky, but it's [8870 Orchard Road, Raleigh, North Carolina] (user_address)
+    - And finally, it's [4500 Clearview Parkway, Baltimore, Maryland](user_address)
+    - [123 main street woodbridge virginia](user_address)
+- intent: intent_how_are_you
+  examples: |
+    - hey how are you
+    - hello how you doing
+    - hi how are you doing
+    - how you doing
+    - hows your day
+    - whats up how are you
+    - hey how are you doing
+    - How have you been?
+    - Hey how you doing today?
+    - hey how are you doing today?
+    - hey stepheny how are you doing today?
+- intent: intent_greet
+  examples: |
+    - hey
+    - hello
+    - Hi there!
+    - hi
+    - good morning
+    - good evening
+    - hey there
+    - heyy
+    - whats up
+    - yooooo
+    - yo wassup
+    - wassup
+    - What's up mate?
+    - sup
+    - yo whats good bro
+    - sup mate
+- intent: intent_affirm
+  examples: |
+    - yes
+    - yea
+    - yup
+    - yes sir
+    - yup thats correct
+    - thats right
+    - yes its correct
+    - yes im sure
+    - es
+    - Yeah
+    - uhh yea
+    - yea its my house
+    - ok that sounds good with me
+    - yea thats right
+    - yea thats good 
+- intent: intent_deny
+  examples: |
+    - no
+    - nah
+    - nope
+    - uh no
+    - actually lets not do that
+    - I don't think so
+    - thats not going to work for me
+    - I'd rather not
+    - not this time maybe later
+    - nah not this time man
+    
+- intent: intent_thank
+  examples: |
+    - Thanks a lot
+    - Thanks for your help
+    - Appreciate it
+    - Thank you for the information
+    - thank you very much
+    - thanks
+    - no thats it thank you very much
+    - thanks for that
+    - ok thank you
+    - thank you
+    - alright thank you so much
+- intent: intent_goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you around
+    - see you later
+    - have a good day
+    - thats it bye
+    - no thats it have a good day
+    - no thats it
+    - thats it
+    - no thats it bye
+    - thats it have a good day
+    - thats it thank you bye
+    - no thank you bye
+    - no thank you see you at 2
+    - thanks bye
+    - thank you thats it
+    - no thats it thank you
+    - alright man you have a good day
+    - yea ok well i appreciate it so much have a great day alright
+    - You too bye bye
+    - bye bye
+    - thank you so much you have a good day
+    - you too bye bye
+    - alright you have a good day bye bye
+    - thanks bye have a good day
+    - thanks you have a good day
+    - all good
+# - intent: intent_chitchat
+#   examples: |
+#     - what's the weather like?
+#     - do you have a wife?
+#     - i've lost my pizza
+#     - my house is burning down
+#     - stop talking to me bruh
+#     - you cant help me bruh
+#     - oh okay 89 dollars is not bad
+#     - are you single 
+- intent: intent_bot_challenge
+  examples: |
+    - are you a bot
+    - am I speaking to a human
+    - is this a human
+    - what are you
+    - is this a human talking
+    - Youre not a robot are you?
+    - Just checking but youre a real person, right?
+    - Is this automated or am I talking to an actual person?
+    - Can you confirm if you're a computer
+    - This isnt a bot I'm speaking with correct?
+- intent: intent_repeat_last_phrase
+  examples: |
+    - can you repeat that
+    - i didnt hear you
+    - what was that
+    - can you say that again
+    - wait i didnt hear you 
+    - Sorry could you go over that once more?
+    - My line cut out for a moment what did you just say?
+    - wait i missed that last part, can you repeat it
+    - I didnt catch that could you tell me again
+    - Could you go back to what you just said?
+    - Pardon me, but could you repeat the last part?
+    - I missed that, could you say it again?
+    - Can you repeat what you just said?
+    - Please, say that once more.
+    - Repeat that, please.
+
+- intent: intent_price_expensive
+  examples: |
+    - wow thats very expensive 
+    - thats a lot of money
+    - thats alot 
+    - thats very expensive 
+    - i cant pay that much 
+    - That price is higher than I expected
+    - Isnt that a bit steep for this service?
+    - I'm taken aback by the cost; is that the standard rate?
+    - That's more than I'm able to afford right now
+    - Are those charges typical? It seems quite high.
+
+- intent: intent_ask_business_hours
+  examples: |
+    - what time are you guys open
+    - when are yall open
+    - what time do you guys close
+    - do you guys serve on weekends 
+    - What are your hours of operation on weekdays?
+    - Are you available for service on Sundays
+    - How late do you stay open on Saturdays
+    - Do your business hours change during the holiday season?
+    - Whats the earliest time I can come in on a weekday?
+
+- intent: intent_wrong_info
+  examples: |
+    - wrong address
+    - wait thats wrong
+    - that is wrong 
+    - thats wrong
+    - thats incorrect
+    - no that part isnt right
+    - Something in that isnt accurate.
+    - youve got something mixed up there.
+    - that detail doesn't seem correct.
+    - i think theres a mistake with what you said
+    - One of those facts is off
+    - That doesn't sound right to me
+    - You misunderstood one of the details
+    - i believe theres an error in what you mentioned
+    - part of that information isnt correct
+
+- intent: intent_wrong_address
+  examples: |
+    - the address is wrong
+    - my address is not that 
+    - my address is wrong 
+    - the address you got is wrong
+    - you have the incorrect address
+    - Thats not where I live.
+    - Youve got the wrong house number
+    - The street name isnt right
+    - That address doesn't match mine.
+    - i think you recorded my address incorrectly
+    - The address needs a correction.
+    - You've listed the wrong address for me
+    - that's not my address
+    - please update the address its incorrect
+
+- intent: intent_wrong_zipcode
+  examples: |
+    - the zip code is wrong
+    - wait my zipcode is not that 
+    - my zip code is wrong 
+    - the zip code you got is wrong
+    - The postal code is be wrong
+    - That's not the right zip code.
+    - The zip you mentioned doesn't match mine
+    - You've got an incorrect zip code for me.
+    - My zip code is different
+    - I need to correct the zip code you have
+    - That zip code is not accurate.
+    - Please fix the zip code.
+    - You've made a mistake with the zip code.
+    - The zip code on file is incorrect.
+
+- intent: intent_wrong_name
+  examples: |
+    - wait wait the name is wrong
+    - my name is not that 
+    - my name is wrong 
+    - the name you got is wrong
+    - Youve misspelled my name.
+    - That's not how my name is written.
+    - You got my name wrong
+    - My name isn't correct in your system
+    - Theres a mistake with my name
+    - I need to correct the name you have for me.
+    - The name provided is incorrect
+    - Youve used the wrong name.
+    - That name isn't right for my account.
+    - Please update my name its wrong
+
+- intent: intent_wrong_appointment_date
+  examples: |
+    - wait i want to change the time 
+    - i want to book an appointment for another day 
+    - that appointment time is wrong wait 
+    - i might be busy that time
+    - im busy at twelve
+    - im busy
+    - the time is wrong i want to change it 
+    - i want to change the time
+    - i dont think three will work for me
+    - i might not be free on thursday at five
+    - firday at four isnt good for me 
+    - i actually might not be free on monday
+    - the date you mentioned doesnt work for me
+    - That day isn't good for me 
+    - Can we find a different time
+    - The time you've set isn't convenient
+    - I need to move the appointment to a different day
+    - That timing wont work
+
+- intent: intent_dont_want_appointment
+  examples: |
+    - i dont want to book an appointment
+    - im not ready for a appointment
+    - dont book an appointment right now
+    - Lets hold off on scheduling for now
+    - Ive changed my mind about that appointment
+    - I think Ill wait before setting up a time
+    - No need to schedule anything at the moment
+    - I'm going to pass on making an appointment right now
+
+
+- intent: intent_user_requests_explanation
+  examples: |
+    - why do you need that
+    - why do you need to know that
+    - is that necessary
+    - Whats the reason for asking this?
+    - Can you explain why this information is needed?
+    - Is this information mandatory for the service?
+    - Why is this detail important
+    - Do you really need this to proceed?
+
+- intent: intent_out_of_scope
+  examples: |
+    - what's the weather like?
+    - do you have a wife?
+    - i've lost my pizza
+    - my house is burning down
+    - stop talking to me bruh
+    - you cant help me bruh
+    - are you single 
+    - What's the best method for removing coffee stains from a carpet?
+    - Can you give me advice on filing my taxes?
+    - How can I fix a crack in my smartphone's screen?
+    - What are the symptoms of the common cold?
+    - Can you recommend a good skincare routine?
+    - How do I reset my email password?
+    - What's the latest news on the stock market?
+    - How can I improve my Wi-Fi speed?
+    - Can you suggest a workout plan for beginners?
+    - What are some effective weight loss diets?
+    - How do I change the oil in my car?
+    - Can you help me plan a vacation?
+    - What are the best practices for digital marketing?
+    - How do I install a new operating system on my computer?
+    - What are the upcoming holiday dates?
+    - Can you teach me a second language?
+    - What are some tips for public speaking
+    - How do I repair a torn book page?
+    - Can you recommend a pet-friendly houseplant?
+    - How do I make a perfect cup of coffee?

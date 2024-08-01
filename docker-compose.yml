@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build:
+      context: ./fastapi_ivr
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://ivr:ivr@db/ivr_data
+      - RASA_SERVER_URL=http://rasa:5005/webhooks/rest/webhook
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - rasa
+    networks:
+      - ivr-network
+
+  rasa:
+    build:
+      context: ./rasa_ivr
+      dockerfile: dockerfile  
+    ports:
+      - "5005:5005"
+    depends_on:
+      - actions
+    networks:
+      - ivr-network
+
+  actions:
+    build:
+      context: ./rasa_ivr
+      dockerfile: Dockerfile
+    ports:
+      - "5055:5055"
+    networks:
+      - ivr-network
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: ivr
+      POSTGRES_PASSWORD: ivr
+      POSTGRES_DB: ivr_data
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - ivr-network
+
+networks:
+  ivr-network:
+
+volumes:
+  postgres_data:
+

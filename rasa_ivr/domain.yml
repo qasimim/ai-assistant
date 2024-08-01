@@ -1,0 +1,224 @@
+version: '3.1'
+intents:
+  - intent_about_services_provided
+  - intent_affirm
+  - intent_ask_about_available_appointments
+  - intent_ask_if_correct_company
+  - intent_bot_challenge
+  - intent_call_back
+  # - intent_chitchat
+  - intent_out_of_scope
+  - intent_deny
+  - intent_describe_issue_in_detail:
+      use_entities: []
+  - intent_goodbye
+  - intent_greet
+  - intent_how_are_you
+  - intent_job_duration
+  - intent_thank
+  - intent_want_appointment:
+      use_entities: []
+  - intent_want_quote
+  - intent_want_services
+  - intent_repeat_last_phrase
+  - intent_price_expensive
+  - intent_ask_business_hours
+  - intent_wrong_info
+  - intent_user_requests_explanation
+  - intent_dont_want_appointment
+  - intent_wrong_appointment_date
+  - intent_wrong_address
+  - intent_wrong_zipcode
+  - intent_wrong_name
+  - user_address
+  - user_name:
+      use_entities: []
+  - user_zipcode
+
+entities:
+  - issue_date:
+      roles:
+        - issue_time
+        - issue_day
+  - user_address
+  - user_zipcode
+  - PERSON
+
+slots:
+  PERSON:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: PERSON
+        intent: user_name
+  user_name_given:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+  user_zipcode_given:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+  user_zipcode:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: user_zipcode
+  user_address:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: user_address
+        intent: user_address
+  issue_time:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: issue_date
+        role: issue_time
+        intent: intent_want_appointment
+  issue_day:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: issue_date
+        role: issue_day
+        intent: intent_want_appointment
+  issue_description_detailed:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        intent: intent_describe_issue_in_detail
+
+responses:
+  utter_ask_availability:
+    - text: Could you tell me when you'd prefer our technician to visit for a check-up?
+    - text: When would be a good time for us to come out?
+
+  utter_different_services_provided:
+    - text: We offer a range of services, from drain cleaning to water heater repairs. Could you describe the issue you're facing, so I can assist you better?
+    - text: We offer just plumbing and we also are gas contractors, what specific issue are you facing?
+
+  utter_how_can_help:
+    - text: What plumbing issue can I help you with?
+
+  utter_job_duration:
+    - text: The duration of the job can vary depending on the specific issue and its complexity. Our technician assesses the situation on-site, they will be able to give you a more accurate time estimate.
+    - text: Usually if the technician has the materials and tools he needs to fix that issue on his truck then he can do it the same day if for any reason he requires something to order or anything like that then they have to come back but its usually a pretty quick turn around time
+    - text: So basically it depends on the issue like if we have the stuff on the truck then it would be on the same day, if it's specialized stuff we might even have to get the materials and come back so we can't provide an exact duration.
+
+  utter_available_appointments:
+    - text: Looking at my schedule, I could actually get a technician out to you between 4 and 8 today to make repairs.
+    - text: Right now we are currently booking for next Tuesday through Friday.
+    - text: I do have a plumber that is on standby I can get him out there between eight, two, and four for you.
+    - text: We might be able to do Saturday; we don't have any extra charge on the weekends, it's the same rate.
+
+  utter_quote:
+    - text: For our services, the starting labor fee is $75, with additional costs depending on the job's requirements.
+
+  utter_doing_great:
+    - text: I'm doing great, thanks for asking. How can I help you?
+    - text: I'm good, how can I help you?
+
+  utter_greet:
+    - text: Hey, how can I help you today?
+    - text: Hello, how can I help you?
+
+  utter_thank:
+    - text: You're very welcome! Please let me know if you have any more questions.
+
+  utter_call_back:
+    - text: Whenever you are ready just give me a call, I really do appreciate your time and thank you for considering us.
+
+  utter_goodbye:
+    - text: Goodbye, and thank you for reaching out to us.
+
+  utter_ask_user_name:
+    - text: Can I get your name to help you with your problem?
+
+  utter_ask_user_zipcode:
+    - text: Could you share your zipcode with me?
+
+  utter_ask_user_address:
+    - text: What's your full address?
+
+  utter_describe_issue_in_detail:
+    - text: I'm sorry to hear about that. To help you better, could you please describe any steps you've already taken to address the problem, how long it's been occurring, and any specific details or changes you've noticed.
+
+  utter_affirm_to_correct_company:
+    - text: Yes, that's right.
+
+  utter_new_issue_date:
+    - text: Could you please provide me the best time that works for you?
+
+  utter_rephrase:
+    - text: I apologize for the confusion. Could you please restate that? I didn't quite understand.
+
+  utter_i_am_bot:
+    - text: I'm your virtual assistant, equipped to understand and respond to full sentences. How may I assist you today?
+
+  utter_respond_price_expensive:
+    - text: I understand where you're coming from; the price might be expensive, but just like you value your home, we value the satisfaction of our customers by providing top-notch services.
+
+  utter_business_hours:
+    - text: Our business hours are Monday to Friday from 8 am to 6 pm. We are closed on weekends and national holidays.
+
+  utter_ask_about_wrong_info:
+    - text: What information needs to be corrected?
+
+  utter_provide_correct_name:
+    - text: Could you please provide the correct name?
+
+  utter_provide_correct_zipcode:
+    - text: Could you please provide the correct zipcode?
+
+  utter_provide_correct_address:
+    - text: Could you please provide the correct address?
+
+  utter_provide_explanation_for_name:
+    - text: Collecting the name helps us to get to know you better for a more personalized conversation.
+
+  utter_provide_explanation_for_zipcode:
+    - text: I need the zipcode to see if we serve your location.
+
+  utter_provide_explanation_for_address:
+    - text: I need the address to send the technician to the right place.
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+  - utter_ask_user_address
+  - action_confirm_issue_date
+  - utter_quote
+  - utter_rephrase
+  - utter_doing_great
+  - utter_ask_availability
+  - utter_ask_user_name
+  - utter_ask_user_zipcode
+  - action_confirm_everything
+  - utter_greet
+  - utter_available_appointments
+  - action_user_name_given
+  - utter_goodbye
+  - utter_describe_issue_in_detail
+  - utter_thank
+  - utter_job_duration
+  - utter_call_back
+  - utter_affirm
+  - action_repeat_last_phrase
+  - utter_different_services_provided
+  - action_reset_issue_date
+  - action_ask_user_name
+  - action_chatgpt_response
+  - action_chatgpt_response_out_of_scope
+  - action_save_customer_info
+  - action_report_issue
+  - action_user_zipcode_given

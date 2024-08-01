@@ -1,0 +1,84 @@
+# The config recipe.
+# https://rasa.com/docs/rasa/model-configuration/
+recipe: default.v1
+
+# The assistant project unique identifier
+# This default value must be replaced with a unique assistant name within your deployment
+assistant_id: 20231202-195756-radioactive-publicist
+
+# Language of the assistant
+language: en
+
+# Different configurations to fine-tune your assistant
+pipeline:
+# SpacyNLP is used to detect names
+- name: SpacyNLP
+  model: en_core_web_md
+  case_sensitive: false
+
+# - name: SpacyTokenizer
+
+# - name: SpacyFeaturizer
+- name: WhitespaceTokenizer
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
+- name: CountVectorsFeaturizer
+- name: CountVectorsFeaturizer
+- name: RegexFeaturizer
+
+- name: SpacyEntityExtractor
+  dimensions: ["PERSON"]   
+
+- name: LexicalSyntacticFeaturizer
+
+- name: CountVectorsFeaturizer
+  analyzer: char_wb
+  min_ngram: 1
+  max_ngram: 4
+
+# DIET used for intent and entity classification
+- name: DIETClassifier
+  epochs: 100
+  model_confidence: softmax
+  constrain_similarities: true
+
+- name: EntitySynonymMapper
+
+# Selects the appropriate response to user
+- name: ResponseSelector
+  epochs: 100
+  constrain_similarities: true
+
+# If not intent has been classifed will ask user to rephrase
+- name: FallbackClassifier
+  threshold: 0.4
+  ambiguity_threshold: 0.1
+
+# - name: "DucklingEntityExtractor"
+#   # url of the running duckling server
+#   url: "http://localhost:8000"
+#   # dimensions to extract
+#   dimensions: ["time"]
+
+
+
+
+# Fine-tune assistant with policies
+policies:
+# Rule policy is used for forms
+  - name: RulePolicy
+  #   core_fallback_threshold: 0.4
+  #   core_fallback_action_name: "action_default_fallback"
+  #   enable_fallback_prediction: True
+
+# Memoization policy is used for generlizing conversations from stories
+  - name: MemoizationPolicy
+    max_history: 5 # How many steps in the conversation does the assitant remember
+    epochs: 100
+    constrain_similarities: true
+
+# TED is used for next action prediction
+  - name: TEDPolicy
+    max_history: 5 # How many steps in the conversation does the assitant remember
+    epochs: 100
+    constrain_similarities: true
